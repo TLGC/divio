@@ -7,6 +7,7 @@ INSTALLED_ADDONS = [
     'aldryn-sso',
     'aldryn-django-cms',
     'aldryn-newsblog',
+    'aldryn-people',
     'djangocms-file',
     'djangocms-googlemap',
     'djangocms-history',
