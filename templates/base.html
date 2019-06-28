@@ -3,57 +3,172 @@
 <html class="no-js" lang="{{ LANGUAGE_CODE }}">
 
 <head>
-  <meta charset="utf-8">
-  <title>{% block title %}{% page_attribute page_title %} - {{ request.site.name }}{% endblock title %}</title>
-  <meta name="description" content="{% page_attribute 'meta_description' %}">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{% block title %}{% page_attribute page_title %} - {{ request.site.name }}{% endblock title %}</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- I don't know what this are -->
   <link rel="manifest" href="{% static 'site.webmanifest' %}">
   <link rel="apple-touch-icon" href="{% static 'icon.png' %}">
   <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 
-  <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+
+  <!-- django CMS -->
   {% render_block "css" %}
+
+  <!-- Divio Cloud -->
   {{ ALDRYN_SNAKE.render_head }}
 
   <meta name="theme-color" content="#fafafa">
+
+  <!-- django CMS toolbar adjustment -->
+  {% if request.toolbar %}
+  <style>
+    .cms-toolbar-expanded .navbar.fixed-top {
+        margin-top: 45px;
+    }
+  </style>
+  {% endif %}
+
 </head>
 
 <body>
+
+  <!-- django CMS Toolbar -->
   {% cms_toolbar %}
+
   <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <ul>
-    {% show_menu 0 0 100 100 %}
-  </ul>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
 
-  {% block content %}
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-  {% endblock %}
+      <a class="navbar-brand" href="/">TLGC</a>
 
-  <script src="{% static 'js/vendor/modernizr-3.7.1.min.js' %}"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
-  <script src="{% static 'js/plugins.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
 
-  {# use "Aldryn Google Analytics" from within "Manage Addons" to include the tracking code instead #}
-  {% comment %}
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-  {% endcomment %}
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          {% with dropdown=True %}
+            {% show_menu 0 100 100 100 "includes/menu.html" %}
+          {% endwith %}
+        </ul>
+      </div>
 
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  {% placeholder header or %}
+  <header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <div class="site-heading">
+            <h1>{% page_attribute "page_title" %}</h1>
+            <span class="subheading">Written by TLGC</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+  {% endplaceholder %}
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% block content %}
+        <!-- Add your site or application content here -->
+        <p>Hello world! This is HTML5 Boilerplate.</p>
+        {% endblock %}
+      </div>
+
+    </div>
+
+  </div>
+
+    <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <p class="copyright text-muted">
+            Copyright &copy; The Living God Church 2009-2019
+            <br>
+            England No. #777, Scotland No. #7777
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/clean-blog.min.js' %}"></script>
+
+  <!-- django CMS -->
   {% render_block "js" %}
+
+  <!-- Divio Cloud -->
   {{ ALDRYN_SNAKE.render_tail }}
+
 </body>
 
 </html>
