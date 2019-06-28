@@ -10,19 +10,14 @@
 
     {% static_placeholder "newsblog_social" %}
 
-        <!-- Pager -->
-        <div class="clearfix">
-        
+    <ul class="pagination">
         {% if prev_article %}
-          <a class="btn btn-primary float-left" href="{{ prev_article.get_absolute_url }}">&larr; {% trans "Previous Article" %}</a>
+            <li class="page-item"><a class="page-link" href="{{ prev_article.get_absolute_url }}">{% trans "Previous Article" %}</a></li>
         {% endif %}
-
-        <!-- <a href="{% namespace_url "article-list" %}">{% trans "Back to Overview" %}</a></li> -->
-
+        <li class="page-item"><a class="page-link" href="{% namespace_url "article-list" %}">{% trans "Back to Overview" %}</a></li>
         {% if next_article %}
-            <a class="btn btn-primary float-right" href="{{ next_article.get_absolute_url }}">{% trans "Next Article" %} &rarr;</a>
+            <li class="page-item"><a class="page-link" href="{{ next_article.get_absolute_url }}">{% trans "Next Article" %}</a></li>
         {% endif %}
-
-        </div>
+    </ul>
 
 {% endblock %}
