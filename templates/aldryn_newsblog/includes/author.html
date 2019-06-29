@@ -2,6 +2,6 @@
 
 {% if author %}
     <span class="meta">
-        Posted by <a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}"> {{ article.author.name }} </a> on {{ article.publishing_date|date:"D d M Y" }}
+        Posted by <a href="{% namespace_url "article-list-by-author" author.slug namespace=namespace default='' %}"> {{ article.author.name }} </a> on {{ article.publishing_date|date:"D d M Y" }}
     </span>
 {% endif %}
