@@ -14,7 +14,6 @@ INSTALLED_ADDONS = [
     'djangocms-googlemap',
     'djangocms-history',
     'djangocms-icon',
-    'djangocms-link',
     'djangocms-picture',
     'djangocms-snippet',
     'djangocms-style',
