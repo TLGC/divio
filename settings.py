@@ -10,7 +10,6 @@ INSTALLED_ADDONS = [
     'aldryn-newsblog',
     'aldryn-people',
     'djangocms-bootstrap4',
-    'djangocms-file',
     'djangocms-googlemap',
     'djangocms-history',
     'djangocms-icon',
