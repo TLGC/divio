@@ -6,7 +6,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="description" content="{% page_attribute "meta_description" %}">
   <meta name="author" content="">
 
   <title>{% block title %}{% page_attribute page_title %} - {{ request.site.name }}{% endblock title %}</title>
@@ -59,7 +59,7 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
 
-      <a class="navbar-brand" href="/">The Living God Church</a>
+      <a class="navbar-brand" href="/">{{ request.site.name }}</a>
 
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
